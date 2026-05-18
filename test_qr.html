@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>二维码测试</h1>
+    <div id="qrcode" style="margin: 20px;"></div>
+    <p>如果能看到二维码，说明QRCode库工作正常</p>
+    
+    <script>
+        // 测试生成二维码
+        QRCode.toCanvas(document.getElementById('qrcode'), 'Hello World!', {
+            width: 200,
+            margin: 2
+        }, function (error) {
+            if (error) console.error(error)
+            console.log('二维码生成成功!')
+        })
+    </script>
+</body>
+</html>
