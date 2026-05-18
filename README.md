@@ -27,7 +27,43 @@
 - 文件/文件夹移动
 - 文件/文件夹删除
 - 文件搜索
-- 文件下载
+- 文件上传
+
+### 下载功能
+
+#### 普通下载
+- 单文件下载 - 获取下载链接或发送到 Motrix
+- 文件夹下载 - 递归下载整个文件夹（需要 Motrix）
+
+#### Motrix 加速下载
+集成 [Motrix](https://motrix.app/) 下载管理器，实现高速下载：
+- 自动检测 Motrix RPC 服务状态
+- RPC 开启时自动发送下载任务到 Motrix
+- RPC 未开启时返回下载链接供浏览器下载
+- 支持文件夹递归下载，自动创建目录结构
+
+**配置 Motrix：**
+1. 下载并安装 Motrix: https://motrix.app/
+2. 打开 Motrix，进入「偏好设置」-> 「进阶设置」
+3. 开启「RPC 服务」，默认端口 `16800`
+4. 保持 Motrix 运行状态
+
+### 分享功能
+
+#### 创建分享
+- 创建分享链接
+- 设置提取码（可选）
+- 设置有效期
+
+#### 分享链接下载
+直接下载分享链接中的文件，无需转存到网盘：
+- 支持单文件和文件夹下载
+- 支持递归下载文件夹内所有内容
+- 需要开启 Motrix RPC 服务
+
+#### 下载模式
+- **保存下载 (keep)** - 转存到网盘后下载，文件保留在「来自：分享」文件夹中
+- **无痕下载 (clean)** - 转存后下载，下载完成自动删除转存的文件，不占用网盘空间
 
 ## 项目结构
 
@@ -121,12 +157,22 @@ stop.bat
 
 ### 文件管理
 - `GET /api/v1/files/list` - 获取文件列表
-- `POST /api/v1/files/create` - 创建文件夹
-- `POST /api/v1/files/rename` - 重命名
+- `POST /api/v1/files/folder` - 创建文件夹
+- `PUT /api/v1/files/rename` - 重命名
 - `POST /api/v1/files/move` - 移动文件
-- `POST /api/v1/files/delete` - 删除文件
+- `DELETE /api/v1/files/delete` - 删除文件
 - `GET /api/v1/files/search` - 搜索文件
-- `GET /api/v1/files/download` - 下载文件
+- `GET /api/v1/files/download/{file_id}` - 下载文件
+- `GET /api/v1/files/download-folder/{folder_id}` - 下载文件夹
+- `POST /api/v1/files/upload` - 上传文件
+
+### 分享管理
+- `POST /api/v1/files/share` - 创建分享链接
+- `GET /api/v1/files/shares` - 获取我的分享列表
+- `DELETE /api/v1/files/share/{share_id}` - 删除分享
+- `GET /api/v1/files/share-info` - 获取分享链接信息
+- `POST /api/v1/files/transfer-share` - 转存分享文件
+- `POST /api/v1/files/download-share` - 下载分享文件（支持保存/无痕模式）
 
 ## 许可证
 
