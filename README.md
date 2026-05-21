@@ -24,7 +24,7 @@
 </div>
 
 ---
-若只想使用下载功能，也可以直接使用油猴脚本，[夸克网盘下载助手](https://github.com/H1d3rOne/QuarkDownloader)
+若只想使用下载功能，也可以直接使用油猴脚本，详情查看这个项目：[夸克网盘下载助手](https://github.com/H1d3rOne/QuarkDownloader)
 
 ## ✨ 功能特性
 
