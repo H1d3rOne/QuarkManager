@@ -243,7 +243,8 @@ stop.bat
 
 ## 📄 许可证
 
-本项目基于 [MIT License](LICENSE) 开源。
+本项目基于 [MIT License](LICENSE) 开源。  
+欢迎来[linux.do](https://linux.do/)社区交流、分享和反馈。
 
 ---
 
